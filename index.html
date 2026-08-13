@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reporte de Trabajo Realizado - Proyectos Técnicos 2008 F.P.C.A</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-soft: #4a4a4a;
+    --ink-faint: #8a8a8a;
+    --line: #111111;
+    --line-soft: #b9b9b9;
+    --line-faint: #e2e4e6;
+    --paper: #ffffff;
+    --canvas: #eef0f2;
+    --fill-head: #f6f7f8;
+    --accent: #14314f;
+    --accent-soft: #eaf0f6;
+    --danger: #c0293f;
+    --danger-soft: #fbe9eb;
+    --focus: #14314f;
+    --radius-lg: 8px;
+    --radius-md: 5px;
+    --radius-sm: 3px;
+    --border-w: 1px;
+    --border-w-strong: 1.2px;
+    --font-sans: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    --font-mono: 'Courier New', Courier, monospace;
+    --fs-xxs: 8px;
+    --fs-xs: 9px;
+    --fs-sm: 10px;
+    --fs-base: 10.5px;
+    --fs-md: 11.5px;
+    --fs-lg: 14px;
+    --fs-xl: 17px;
+    --gap-xs: 4px;
+    --gap-sm: 8px;
+    --gap-md: 12px;
+    --gap-lg: 18px;
+    --line-field-h: 17px;
+    --sig-height: 190px;
+    --shadow-card: 0 4px 24px rgba(20,49,79,.10);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--canvas);
+    color: var(--ink);
+    font-size: var(--fs-base);
+    line-height: 1.25;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    width: 100%;
+    max-width: 210mm;
+    min-height: auto;
+    background: var(--paper);
+    margin: 10px auto;
+    padding: 10px;
+    box-shadow: var(--shadow-card);
+  }
+
+  @media screen and (min-width: 768px) {
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 10mm 12mm 10mm;
+      margin: 20px auto;
+    }
+  }
+
+  fieldset { border: none; }
+  input[type="text"], textarea {
+    font-family: inherit;
+    font-size: var(--fs-base);
+    color: var(--ink-soft);
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    border-radius: 3px;
+    transition: background-color .12s ease;
+  }
+  input[type="text"]::placeholder { color: #a9a9a9; }
+  @media screen {
+    input[type="text"]:focus, textarea:focus {
+      background-color: var(--accent-soft);
+    }
+  }
+  .box {
+    border: var(--border-w-strong) solid var(--line);
+    border-radius: var(--radius-lg);
+  }
+  .doc-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--gap-sm);
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--accent);
+  }
+  .doc-header h1 {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: var(--ink);
+    flex: 1 1 140px;
+  }
+  @media screen and (min-width: 480px) {
+    .doc-header h1 { font-size: var(--fs-xl); }
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-sm);
+  }
+  .brand img {
+    height: 60px;
+    width: auto;
+    display: block;
+  }
+  @media screen and (min-width: 480px) {
+    .brand img { height: 75px; }
+  }
+  .brand-copy {
+    text-align: right;
+    line-height: 1.15;
+  }
+  .brand-copy .name {
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--accent);
+  }
+  @media screen and (min-width: 480px) {
+    .brand-copy .name { font-size: var(--fs-lg); }
+  }
+  .brand-copy .sub-name {
+    display: block;
+    font-size: 9.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  @media screen and (min-width: 480px) {
+    .brand-copy .sub-name { font-size: var(--fs-sm); }
+  }
+  .brand-copy .rif {
+    display: block;
+    font-size: var(--fs-xs);
+    color: #6b6b6b;
+    margin-top: 1px;
+    white-space: nowrap;
+  }
+  .brand-copy .report-number {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    margin-top: 2px;
+    color: var(--ink);
+  }
+  .report-number span {
+    font-family: var(--font-mono);
+    font-size: var(--fs-md);
+    font-weight: 800;
+    letter-spacing: .03em;
+    color: var(--danger);
+    background: var(--danger-soft);
+    border: var(--border-w) solid rgba(192,41,63,.35);
+    border-radius: 4px;
+    padding: 1px 6px;
+  }
+  .job-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-sm);
+    margin-bottom: 10px;
+  }
+  .job-type legend {
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    color: var(--accent);
+    margin-bottom: 4px;
+    width: 100%;
+  }
+  .job-type-cols {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--gap-md);
+    flex: 1 1 100%;
+  }
+  .check-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1 1 140px;
+  }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: var(--fs-sm);
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 2px;
+  }
+  @media screen {
+    .check-item:hover { background-color: var(--fill-head); }
+  }
+  input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    min-width: 12px;
+    margin-top: 1px;
+    border: var(--border-w-strong) solid var(--line);
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+    background: var(--paper);
+  }
+  input[type="checkbox"]:checked {
+    background: var(--ink);
+  }
+  
+  /* --- INICIO PARCHE CSS PARA HTML2CANVAS --- */
+  input[type="checkbox"]::before,
+  input[type="checkbox"]::after {
+    z-index: auto !important; /* Salva a html2canvas del error z-index */
+    content: none;
+  }
+  /* --- FIN PARCHE CSS --- */
+
+  input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 2px; top: 0px;
+    width: 4px; height: 7px;
+    border: solid var(--paper);
+    border-width: 0 1.5px 1.5px 0;
+    transform: rotate(45deg);
+    z-index: auto !important; /* Salva a html2canvas del error z-index */
+  }
+  .meta-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+  @media screen and (min-width: 520px) {
+    .meta-col { width: 210px; }
+  }
+  .date-box {
+    display: flex;
+    align-items: stretch;
+    border: var(--border-w-strong) solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .date-box .date-label {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    font-weight: 700;
+    font-size: var(--fs-sm);
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-right: var(--border-w-strong) solid var(--line);
+    white-space: nowrap;
+  }
+  .date-fields { flex: 1; display: flex; flex-direction: column; }
+  .date-fields .heads,
+  .date-fields .inputs {
+    display: flex;
+    text-align: center;
+  }
+  .date-fields .heads {
+    background: var(--fill-head);
+    border-bottom: var(--border-w) solid var(--line);
+    font-size: var(--fs-xxs);
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+  .date-fields .heads span,
+  .date-fields .inputs span {
+    flex: 1;
+    padding: 2px 0;
+  }
+  .date-fields .heads span:not(:last-child),
+  .date-fields .inputs span:not(:last-child) {
+    border-right: var(--border-w) solid var(--line-soft);
+  }
+  .date-fields .inputs span {
+    display: flex; align-items: center; justify-content: center;
+    height: 22px;
+  }
+  .date-fields .inputs input { text-align: center; border-radius: 0; height: 100%; }
+  .id-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    border: var(--border-w-strong) solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  @media screen and (min-width: 560px) {
+    .id-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .id-cell {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 8px;
+    border-bottom: var(--border-w) solid var(--line-soft);
+  }
+  .id-cell input {
+    padding: 3px 0;
+    border-bottom: 1px dashed var(--line-soft);
+  }
+  @media screen and (min-width: 560px) {
+    .id-cell { border-right: var(--border-w) solid var(--line-soft); }
+    .id-grid .id-cell:nth-child(2n) { border-right: none; }
+    .id-grid .id-cell.full { grid-column: 1 / -1; border-right: none; }
+    .id-grid .id-cell:nth-last-child(-n+2) { border-bottom: none; }
+  }
+  .id-cell label {
+    font-weight: 700;
+    font-size: var(--fs-sm);
+    white-space: nowrap;
+    color: var(--ink);
+  }
+  @media screen {
+    .id-cell:hover { background-color: var(--fill-head); }
+  }
+  .status-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-sm);
+    margin-bottom: 10px;
+  }
+  @media screen and (min-width: 520px) {
+    .status-row { flex-direction: row; gap: var(--gap-md); }
+  }
+  .status-block {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap-sm);
+    border: var(--border-w) solid var(--line-soft);
+    border-radius: var(--radius-md);
+    padding: 6px 10px;
+    background: var(--fill-head);
+  }
+  .status-block .status-title {
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    max-width: 55%;
+  }
+  .status-block .check-list { gap: 4px; flex: unset; }
+  .status-block .check-item { font-size: var(--fs-xs); font-weight: 600; }
+  .detail-block { margin-bottom: 10px; }
+  .detail-box {
+    padding: 0 10px 6px;
+    height: 130px;
+    position: relative;
+  }
+  .detail-box.short { height: 85px; }
+  .detail-title {
+    display: inline-block;
+    font-size: var(--fs-md);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--paper);
+    padding: 6px 0 2px;
+    position: relative;
+    z-index: 2;
+  }
+  .detail-box textarea {
+    display: block;
+    width: 100%;
+    /* Quitamos el calc() que rompía html2canvas y usamos valor fijo */
+    height: 108px;
+    margin-top: 5px;
+    resize: none;
+    color: var(--ink-soft);
+    background-image: linear-gradient(transparent 16px, #b9b9b9 16px, #b9b9b9 17px);
+    background-size: 100% 17px;
+    background-position: 0 2px;
+    line-height: 17px;
+    padding-top: 1px;
+  }
+  .detail-box.short textarea {
+    height: 63px;
+  }
+  .sign-title {
+    font-size: var(--fs-md);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    color: var(--accent);
+    margin: 4px 0 6px;
+    padding-top: 4px;
+    border-top: 2px solid var(--accent);
+  }
+  .sign-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  @media screen and (min-width: 650px) {
+    .sign-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  }
+  .sign-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .sign-col-label {
+    font-size: 8.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 3px;
+    min-height: 22px;
+    display: flex;
+    align-items: center;
+  }
+  @media screen and (min-width: 650px) {
+    .sign-col-label { font-size: var(--fs-xs); }
+  }
+  .sign-box {
+    display: flex;
+    flex-direction: column;
+    border: var(--border-w-strong) solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    flex: 1;
+  }
+  .sign-fields {
+    display: flex;
+    flex-direction: column;
+  }
+  .sign-field-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 6px;
+    border-bottom: var(--border-w) solid var(--line-soft);
+    font-size: var(--fs-xxs);
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+  .sign-field-row input { font-size: var(--fs-xxs); font-weight: 400; color: var(--ink); padding: 2px 0; }
+  .sign-mark {
+    position: relative;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-top: var(--border-w) solid var(--line-soft);
+    background: var(--paper);
+    overflow: hidden;
+  }
+  @media screen and (min-width: 650px) {
+    .sign-mark { height: var(--sig-height); }
+  }
+  .sign-pad {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+    touch-action: none;
+  }
+  .sign-mark .sign-label {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+    font-size: var(--fs-xxs);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border-top: var(--border-w) solid var(--line);
+    padding: 2px 6px 3px;
+  }
+  .sign-mark.has-ink .sign-label { color: #bcbcbc; }
+  .sign-tools {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    z-index: 2;
+    display: flex;
+    gap: 3px;
+  }
+  .sign-tools button {
+    font-family: inherit;
+    font-size: 7.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: var(--fill-head);
+    border: var(--border-w) solid var(--line-soft);
+    border-radius: 3px;
+    padding: 2px 5px;
+    cursor: pointer;
+  }
+  .submit-section {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: var(--border-w) solid var(--line-faint);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .buttons-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .btn-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+    font-size: var(--fs-sm);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--paper);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color .15s ease, transform .1s ease;
+  }
+  .btn-generate { background: var(--accent); }
+  .btn-generate:hover { background: #1c3f63; }
+  .btn-reset { background: var(--danger); }
+  .btn-reset:hover { background: #a22033; }
+
+  .btn-action:disabled { cursor: wait; opacity: .75; }
+  .btn-spinner {
+    width: 12px; height: 12px;
+    border: 2px solid rgba(255,255,255,.4);
+    border-top-color: var(--paper);
+    border-radius: 50%;
+    display: none;
+    animation: btn-spin .7s linear infinite;
+  }
+  .btn-generate.is-loading .btn-spinner { display: inline-block; }
+  @keyframes btn-spin { to { transform: rotate(360deg); } }
+  .report-status {
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    min-height: 14px;
+    text-align: center;
+    max-width: 90%;
+    word-break: break-word;
+  }
+  .report-status.success { color: #1b8a4a; }
+  .report-status.error { color: var(--danger); }
+
+  .preview-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .preview-content {
+    background: #fff;
+    width: 100%;
+    max-width: 850px;
+    height: 90vh;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .preview-header {
+    padding: 12px 16px;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+  .preview-header button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  .preview-body {
+    flex: 1;
+    width: 100%;
+    background: #eef0f2;
+  }
+  .preview-body iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .preview-footer {
+    padding: 12px 16px;
+    background: #f6f7f8;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-top: 1px solid var(--line-faint);
+  }
+
+  body.generating-pdf .detail-box textarea,
+  body.generating-pdf textarea {
+    background-image: none !important;
+    background-color: transparent !important;
+  }
+
+  body.generating-pdf .sign-tools,
+  body.generating-pdf .submit-section {
+    display: none !important;
+  }
+
+  body.generating-pdf {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+  body.generating-pdf .page {
+    margin: 0 !important;
+    width: 794px !important;
+    max-width: 794px !important;
+    box-shadow: none !important;
+    border: none !important;
+    transform: none !important;
+  }
+
+  @media print {
+    body { background: var(--paper); margin: 0; padding: 0; }
+    .page {
+      width: 210mm;
+      min-height: auto;
+      margin: 0;
+      padding: 10mm;
+      box-shadow: none;
+      border: none;
+    }
+    input, textarea { box-shadow: none !important; outline: none !important; background-color: transparent !important; }
+    .sign-tools, .submit-section { display: none !important; }
+    @page { size: A4 portrait; margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="doc-header">
+    <h1>Reporte de Trabajo Realizado</h1>
+    <div class="brand">
+      <img src="https://i.ibb.co/RTjhHGDN/Gemini-Generated-Image-kngr5wkngr5wkngr.png" alt="Logotipo Proyectos Técnicos PT">
+      <div class="brand-copy">
+        <span class="name">Proyectos Técnicos</span>
+        <span class="sub-name">2008 F.P.C.A</span>
+        <span class="rif">RIF: J-29617930-1</span>
+        <div class="report-number">Nº <span id="numeroAleatorio"></span></div>
+      </div>
+    </div>
+  </header>
+  <section class="job-row">
+    <fieldset class="job-type job-type-cols" style="display:flex; flex-wrap:wrap; gap:var(--gap-md);">
+      <legend>Tipo de Trabajo Efectuado:</legend>
+      <div class="check-list">
+        <label class="check-item"><input type="checkbox" data-save="chk"> Mantenimiento preventivo</label>
+        <label class="check-item"><input type="checkbox" data-save="chk"> Asistencia Técnica para solución de averías</label>
+        <label class="check-item"><input type="checkbox" data-save="chk"> Visita de Inspección</label>
+      </div>
+      <div class="check-list">
+        <label class="check-item"><input type="checkbox" data-save="chk"> Acción Correctiva</label>
+        <label class="check-item"><input type="checkbox" data-save="chk"> Reparación Mayor</label>
+        <label class="check-item"><input type="checkbox" data-save="chk"> Ajuste</label>
+      </div>
+      <div class="meta-col">
+        <div class="date-box">
+          <div class="date-label">Fecha:</div>
+          <div class="date-fields">
+            <div class="heads"><span>DIA</span><span>MES</span><span>AÑO</span></div>
+            <div class="inputs">
+              <span><input type="text" id="autoDia" data-save="field" placeholder="--"></span>
+              <span><input type="text" id="autoMes" data-save="field" placeholder="--"></span>
+              <span><input type="text" id="autoAno" data-save="field" placeholder="----"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </section>
+  <section class="id-grid">
+    <div class="id-cell"><label>Cliente *:</label><input type="text" id="inputCliente" data-save="field"></div>
+    <div class="id-cell"><label>Edificio *:</label><input type="text" id="inputEdificio" data-save="field"></div>
+    <div class="id-cell full"><label>Dirección del Edificio:</label><input type="text" id="inputDireccion" data-save="field"></div>
+    <div class="id-cell"><label>Nombre del Técnico *:</label><input type="text" id="inputTecnico" data-save="field"></div>
+    <div class="id-cell"><label>Cargo:</label><input type="text" id="inputCargo" data-save="field"></div>
+  </section>
+  <section class="status-row">
+    <div class="status-block">
+      <span class="status-title">Estatus del Equipo a la llegada del Técnico</span>
+      <div class="check-list">
+        <label class="check-item"><input type="checkbox" data-save="chk"> PARADO</label>
+        <label class="check-item"><input type="checkbox" data-save="chk"> FUNCIONANDO</label>
+      </div>
+    </div>
+    <div class="status-block">
+      <span class="status-title">Estatus del Equipo a la salida del Técnico</span>
+      <div class="check-list">
+        <label class="check-item"><input type="checkbox" data-save="chk"> PARADO</label>
+        <label class="check-item"><input type="checkbox" data-save="chk"> FUNCIONANDO</label>
+      </div>
+    </div>
+  </section>
+  <section class="detail-block box detail-box">
+    <h3 class="detail-title">Descripción:</h3>
+    <textarea id="inputDescripcion" data-save="field"></textarea>
+  </section>
+  <section class="detail-block box detail-box short">
+    <h3 class="detail-title">Observaciones:</h3>
+    <textarea id="inputObservaciones" data-save="field"></textarea>
+  </section>
+  <footer>
+    <h2 class="sign-title">Signatura:</h2>
+    <div class="sign-grid">
+      <div class="sign-col">
+        <div class="sign-col-label">Por El Técnico *:</div>
+        <div class="sign-box">
+          <div class="sign-fields">
+            <div class="sign-field-row">Nombre y Apellido O Razón Social: <input type="text" id="signNombre1" data-save="field"></div>
+            <div class="sign-field-row">C.I. O R.I.F.: <input type="text" id="signCI1" data-save="field"></div>
+            <div class="sign-field-row">Teléfono / Correo: <input type="text" id="signTlf1" data-save="field"></div>
+          </div>
+          <div class="sign-mark" data-sign-mark id="signMark1">
+            <canvas class="sign-pad" data-sign-pad></canvas>
+            <div class="sign-tools">
+              <button type="button" data-sign-clear>Limpiar</button>
+            </div>
+            <span class="sign-label">Firma Obligatoria</span>
+          </div>
+        </div>
+      </div>
+      <div class="sign-col">
+        <div class="sign-col-label">Por El Cliente *:</div>
+        <div class="sign-box">
+          <div class="sign-fields">
+            <div class="sign-field-row">Nombre y Apellido O Razón Social: <input type="text" id="signNombre2" data-save="field"></div>
+            <div class="sign-field-row">C.I. O R.I.F.: <input type="text" id="signCI2" data-save="field"></div>
+            <div class="sign-field-row">Teléfono / Correo: <input type="text" id="signTlf2" data-save="field"></div>
+          </div>
+          <div class="sign-mark" data-sign-mark id="signMark2">
+            <canvas class="sign-pad" data-sign-pad></canvas>
+            <div class="sign-tools">
+              <button type="button" data-sign-clear>Limpiar</button>
+            </div>
+            <span class="sign-label">Firma Obligatoria</span>
+          </div>
+        </div>
+      </div>
+      <div class="sign-col">
+        <div class="sign-col-label">Por El Supervisor De PT-2008 F.P.C.A.:</div>
+        <div class="sign-box">
+          <div class="sign-fields">
+            <div class="sign-field-row">Nombre y Apellido O Razón Social: <input type="text" id="signNombre3" data-save="field"></div>
+            <div class="sign-field-row">C.I. O R.I.F.: <input type="text" id="signCI3" data-save="field"></div>
+            <div class="sign-field-row">Teléfono / Correo: <input type="text" id="signTlf3" data-save="field"></div>
+          </div>
+          <div class="sign-mark" data-sign-mark id="signMark3">
+            <canvas class="sign-pad" data-sign-pad></canvas>
+            <div class="sign-tools">
+              <button type="button" data-sign-clear>Limpiar</button>
+            </div>
+            <span class="sign-label">Firma Opcional</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<div id="previewModal" class="preview-modal">
+  <div class="preview-content">
+    <div class="preview-header">
+      <span>Vista Previa del Reporte PDF</span>
+      <button type="button" id="closePreviewBtn">&times;</button>
+    </div>
+    <div class="preview-body">
+      <iframe id="pdfPreviewIframe"></iframe>
+    </div>
+    <div class="preview-footer">
+      <button type="button" class="btn-action btn-reset" id="cancelPreviewBtn">Cancelar</button>
+      <button type="button" class="btn-action btn-generate" id="confirmDownloadBtn">Confirmar y Enviar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var randomNum = Math.floor(Math.random() * 90000) + 10000;
+  document.getElementById("numeroAleatorio").textContent = randomNum;
+
+  var hoy = new Date();
+  var dd = String(hoy.getDate()).padStart(2, '0');
+  var mm = String(hoy.getMonth() + 1).padStart(2, '0');
+  var yyyy = hoy.getFullYear();
+
+  document.getElementById("autoDia").value = dd;
+  document.getElementById("autoMes").value = mm;
+  document.getElementById("autoAno").value = yyyy;
+
+  loadDraft();
+});
+
+function saveDraft() {
+  const data = {};
+  document.querySelectorAll('[data-save="field"]').forEach((el, idx) => {
+    data['f_' + idx] = el.value;
+  });
+  document.querySelectorAll('[data-save="chk"]').forEach((el, idx) => {
+    data['c_' + idx] = el.checked;
+  });
+  localStorage.setItem("pt_report_draft", JSON.stringify(data));
+}
+
+function loadDraft() {
+  const saved = localStorage.getItem("pt_report_draft");
+  if (!saved) return;
+  try {
+    const data = JSON.parse(saved);
+    document.querySelectorAll('[data-save="field"]').forEach((el, idx) => {
+      if (data['f_' + idx] !== undefined) el.value = data['f_' + idx];
+    });
+    document.querySelectorAll('[data-save="chk"]').forEach((el, idx) => {
+      if (data['c_' + idx] !== undefined) el.checked = data['c_' + idx];
+    });
+  } catch (e) { console.error(e); }
+}
+
+document.addEventListener('input', saveDraft);
+document.addEventListener('change', saveDraft);
+
+const padsState = [];
+(function () {
+  var pads = document.querySelectorAll('[data-sign-pad]');
+  pads.forEach(function (canvas, index) {
+    var mark = canvas.closest('[data-sign-mark]');
+    var clearBtn = mark.querySelector('[data-sign-clear]');
+    var ctx = canvas.getContext('2d', { willReadFrequently: true });
+    var drawing = false;
+    var hasInk = false;
+    var last = null;
+
+    padsState[index] = {
+      hasInk: function () { return hasInk; },
+      clear: function () {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        hasInk = false;
+        mark.classList.remove('has-ink');
+      }
+    };
+
+    function resize() {
+      var rect = canvas.getBoundingClientRect();
+      var ratio = window.devicePixelRatio || 1;
+      var img = null;
+      if (canvas.width > 0 && canvas.height > 0) {
+        img = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      }
+      canvas.width = Math.max(1, rect.width * ratio);
+      canvas.height = Math.max(1, rect.height * ratio);
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      ctx.lineWidth = 1.8;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.strokeStyle = '#1a1a4a';
+      if (img) {
+        ctx.putImageData(img, 0, 0);
+      }
+    }
+    resize();
+    window.addEventListener('resize', resize);
+    function pointFromEvent(e) {
+      var rect = canvas.getBoundingClientRect();
+      var x, y;
+      if (e.touches && e.touches.length) {
+        x = e.touches[0].clientX - rect.left;
+        y = e.touches[0].clientY - rect.top;
+      } else {
+        x = e.clientX - rect.left;
+        y = e.clientY - rect.top;
+      }
+      return { x: x, y: y };
+    }
+    function start(e) {
+      e.preventDefault();
+      drawing = true;
+      hasInk = true;
+      mark.classList.add('has-ink');
+      last = pointFromEvent(e);
+    }
+    function move(e) {
+      if (!drawing) return;
+      e.preventDefault();
+      var p = pointFromEvent(e);
+      ctx.beginPath();
+      ctx.moveTo(last.x, last.y);
+      ctx.lineTo(p.x, p.y);
+      ctx.stroke();
+      last = p;
+    }
+    function end() {
+      drawing = false;
+      last = null;
+    }
+    canvas.addEventListener('mousedown', start);
+    canvas.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', end);
+    canvas.addEventListener('touchstart', start, { passive: false });
+    canvas.addEventListener('touchmove', move, { passive: false });
+    canvas.addEventListener('touchend', end);
+    clearBtn.addEventListener('click', function () {
+      padsState[index].clear();
+    });
+  });
+})();
+</script>
+
+<div class="submit-section">
+  <div class="buttons-row">
+    <button type="button" id="generateReportBtn" class="btn-action btn-generate">
+      <span class="btn-spinner" aria-hidden="true"></span>
+      <span class="btn-label">Generar PDF y Enviar por Correo</span>
+    </button>
+    <button type="button" id="resetFormBtn" class="btn-action btn-reset">
+      Reiniciar Formulario
+    </button>
+  </div>
+  <p id="reportStatus" class="report-status" role="status" aria-live="polite"></p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script>
+(function () {
+  var DEST_EMAIL = 'cobranzasproyectostecnicos@gmail.com';
+
+  var btn = document.getElementById('generateReportBtn');
+  var btnLabel = btn.querySelector('.btn-label');
+  var resetBtn = document.getElementById('resetFormBtn');
+  var statusEl = document.getElementById('reportStatus');
+  var reportRoot = document.querySelector('.page');
+
+  var previewModal = document.getElementById('previewModal');
+  var closePreviewBtn = document.getElementById('closePreviewBtn');
+  var cancelPreviewBtn = document.getElementById('cancelPreviewBtn');
+  var confirmDownloadBtn = document.getElementById('confirmDownloadBtn');
+  var pdfPreviewIframe = document.getElementById('pdfPreviewIframe');
+
+  let generatedPdfBlobUrl = null;
+  let currentFilename = '';
+  let currentNumReporte = '';
+  let currentPdfInstance = null;
+
+  var __nativeGetComputedStyle = window.getComputedStyle.bind(window);
+
+  var __imageLikeProps = /image$/i;
+
+  /* --- INICIO PARCHE JAVASCRIPT --- */
+  function __safeFallbackFor(propName) {
+    var prop = String(propName).replace(/([A-Z])/g, '-$1').toLowerCase();
+    
+    switch(prop) {
+      case 'z-index': return 'auto';
+      case 'position': return 'static';
+      case 'display': return 'inline';
+      case 'content': return 'none';
+      case 'float': return 'none';
+      case 'clear': return 'none';
+      case 'box-sizing': return 'content-box';
+    }
+    
+    if (__imageLikeProps.test(prop)) return 'none';
+    if (prop.includes('color')) return 'transparent';
+    return '0px';
+  }
+  /* --- FIN PARCHE JAVASCRIPT --- */
+
+  function __patchComputedStyle() {
+    window.getComputedStyle = function (el, pseudo) {
+      var target = __nativeGetComputedStyle(el, pseudo);
+      return new Proxy(target, {
+        get: function (obj, prop) {
+          var value = obj[prop];
+          if (typeof value === 'function') {
+            if (prop === 'getPropertyValue') {
+              return function (propName) {
+                var v = obj.getPropertyValue(propName);
+                if (typeof v === 'string' && v.trim() === '') {
+                  var fallback = __safeFallbackFor(propName);
+                  console.warn('[PDF] Propiedad CSS computada vacía (getPropertyValue):', propName, '-> usando', fallback, el, pseudo || '');
+                  return fallback;
+                }
+                return v;
+              };
+            }
+            return value.bind(obj);
+          }
+          if (typeof value === 'string' && value.trim() === '') {
+            var fallback2 = __safeFallbackFor(String(prop));
+            console.warn('[PDF] Propiedad CSS computada vacía:', prop, '-> usando', fallback2, el, pseudo || '');
+            return fallback2;
+          }
+          return value;
+        }
+      });
+    };
+  }
+
+  function __unpatchComputedStyle() {
+    window.getComputedStyle = __nativeGetComputedStyle;
+  }
+  
+  function setStatus(message, type) {
+    statusEl.textContent = message;
+    statusEl.className = 'report-status' + (type ? ' ' + type : '');
+  }
+
+  function setLoading(isLoading, label) {
+    btn.disabled = isLoading;
+    btn.classList.toggle('is-loading', isLoading);
+    btnLabel.textContent = label;
+  }
+
+  resetBtn.addEventListener('click', function () {
+    var confirmar = window.confirm('¿Estás seguro de que deseas reiniciar el formulario? Se perderán todos los datos ingresados y las firmas.');
+    if (confirmar) {
+      localStorage.removeItem("pt_report_draft");
+      window.location.reload();
+    }
+  });
+
+  function validateForm() {
+    const cliente = document.getElementById('inputCliente').value.trim();
+    const edificio = document.getElementById('inputEdificio').value.trim();
+    const tecnico = document.getElementById('inputTecnico').value.trim();
+
+    if (!cliente || !edificio || !tecnico) {
+      setStatus('✖ Por favor complete los campos obligatorios (*): Cliente, Edificio y Nombre del Técnico.', 'error');
+      return false;
+    }
+
+    if (!padsState[0].hasInk() || !padsState[1].hasInk()) {
+      setStatus('✖ Se requiere obligatoriamente la firma del Técnico y del Cliente.', 'error');
+      return false;
+    }
+
+    return true;
+  }
+
+  btn.addEventListener('click', function () {
+    if (!window.html2pdf) {
+      setStatus('No se pudo cargar html2pdf.js. Verifique su conexión.', 'error');
+      return;
+    }
+
+    setStatus('', '');
+    if (!validateForm()) return;
+
+    setLoading(true, 'Generando Vista Previa...');
+    window.scrollTo(0, 0);
+    document.body.classList.add('generating-pdf');
+
+    currentNumReporte = document.getElementById("numeroAleatorio").textContent;
+    currentFilename = 'Reporte_Trabajo_' + currentNumReporte + '.pdf';
+
+    var pdfOptions = {
+      margin: 0,
+      filename: currentFilename,
+      image: { type: 'jpeg', quality: 0.95 },
+      html2canvas: {
+        scale: 1.6,
+        useCORS: true,
+        backgroundColor: '#ffffff',
+        windowWidth: 794,
+        width: 794,
+        windowHeight: reportRoot.scrollHeight,
+        height: reportRoot.scrollHeight,
+        x: 0,
+        y: 0,
+        scrollY: 0,
+        scrollX: 0,
+        onclone: function (clonedDoc) {
+          var originalCanvases = document.querySelectorAll('canvas.sign-pad');
+          var clonedCanvases = clonedDoc.querySelectorAll('canvas.sign-pad');
+
+          originalCanvases.forEach(function (origCanvas, index) {
+            var clonedCanvas = clonedCanvases[index];
+            if (!clonedCanvas) return;
+
+            var dataUrl = origCanvas.toDataURL('image/png');
+
+            var img = clonedDoc.createElement('img');
+            img.src = dataUrl;
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'contain';
+            img.style.display = 'block';
+
+            clonedCanvas.parentNode.replaceChild(img, clonedCanvas);
+          });
+
+          var originalTextareas = document.querySelectorAll('.detail-box textarea[data-save="field"]');
+          originalTextareas.forEach(function (origTextarea) {
+            var clonedTextarea = clonedDoc.getElementById(origTextarea.id);
+            if (!clonedTextarea) return;
+
+            var computedStyle = window.getComputedStyle(origTextarea);
+            var div = clonedDoc.createElement('div');
+
+            div.textContent = origTextarea.value;
+
+            div.style.whiteSpace = 'pre-wrap';
+            div.style.wordWrap = 'break-word';
+            div.style.overflowWrap = 'break-word';
+            div.style.fontFamily = computedStyle.fontFamily;
+            div.style.fontSize = computedStyle.fontSize;
+            div.style.lineHeight = computedStyle.lineHeight;
+            div.style.color = computedStyle.color;
+            div.style.padding = computedStyle.padding;
+            div.style.backgroundImage = 'none';
+            div.style.width = '100%';
+            div.style.minHeight = computedStyle.height;
+            div.style.boxSizing = 'border-box';
+
+            clonedTextarea.parentNode.replaceChild(div, clonedTextarea);
+
+            var detailBox = div.closest('.detail-box');
+            if (detailBox) {
+              detailBox.style.height = 'auto';
+            }
+          });
+        }
+      },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    __patchComputedStyle();
+
+    html2pdf()
+      .from(reportRoot)
+      .set(pdfOptions)
+      .toPdf()
+      .get('pdf')
+      .then(function (pdf) {
+        __unpatchComputedStyle();
+        currentPdfInstance = pdf;
+
+        var pdfBlob = pdf.output('blob');
+        generatedPdfBlobUrl = URL.createObjectURL(pdfBlob);
+
+        setLoading(false, 'Generar PDF y Enviar por Correo');
+        document.body.classList.remove('generating-pdf');
+
+        pdfPreviewIframe.src = generatedPdfBlobUrl;
+        previewModal.style.display = 'flex';
+        setStatus('✔ Vista previa generada correctamente.', 'success');
+      })
+      .catch(function (err) {
+        __unpatchComputedStyle();
+        console.error(err);
+        setLoading(false, 'Generar PDF y Enviar por Correo');
+        document.body.classList.remove('generating-pdf');
+        setStatus('✖ Ocurrió un error al generar el PDF. Intente de nuevo.', 'error');
+      });
+  });
+
+  function closePreview() {
+    previewModal.style.display = 'none';
+    if (generatedPdfBlobUrl) {
+      URL.revokeObjectURL(generatedPdfBlobUrl);
+      generatedPdfBlobUrl = null;
+    }
+  }
+
+  closePreviewBtn.addEventListener('click', closePreview);
+  cancelPreviewBtn.addEventListener('click', closePreview);
+
+  confirmDownloadBtn.addEventListener('click', function () {
+    closePreview();
+
+    // 1. Descargar el PDF
+    if (currentPdfInstance) {
+      currentPdfInstance.save(currentFilename);
+    }
+
+    // 2. Limpiar caché y actualizar estado
+    localStorage.removeItem("pt_report_draft");
+    setStatus('✔ PDF descargado. Abriendo cliente de correo...', 'success');
+
+    // 3. Preparar el correo
+    var subject = 'Reporte de Trabajo Realizado #' + currentNumReporte;
+    var body =
+      'Saludos cordiales,\n\n' +
+      'Se adjunta el Reporte de Trabajo Realizado Nº ' + currentNumReporte + ' generado desde el sistema web.\n\n' +
+      '--- Instrucción ---\n' +
+      'Por favor, adjunte el archivo "' + currentFilename + '" que se acaba de descargar en su dispositivo y presione Enviar.';
+
+    // 4. Usar el protocolo mailto para abrir el cliente de correo por defecto
+    var mailtoUrl = 'mailto:' + encodeURIComponent(DEST_EMAIL)
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(body);
+
+    // Asignar el href dispara la aplicación de correo (Outlook, Mail, app de Gmail, etc.) 
+    // sin cambiar la página ni ser bloqueado como pop-up.
+    window.location.href = mailtoUrl;
+  });
+
+})();
+</script>
+</body>
+</html>
